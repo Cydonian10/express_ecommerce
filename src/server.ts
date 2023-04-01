@@ -19,6 +19,7 @@ class ServerExpress {
   }
 
   middlwares() {
+    this.app.use(express.json());
     this.app.use("/public", express.static(path.join(cwd(), "public")));
 
     apiRoutes(this.app);

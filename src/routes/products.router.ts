@@ -1,10 +1,23 @@
 import { Router } from "express";
 
-import { getAll, getOne } from "@/controllers/product.controller";
+import {
+  create,
+  getAll,
+  getOne,
+  remove,
+  update,
+} from "@/controllers/product.controller";
 import { validatorHandler } from "@/middlewares/validator.handler";
-import { ParamsIdNumber } from "@/schemas/product.schema";
+import {
+  CreateProducDto,
+  ParamsIdNumber,
+  UpdateProducDto,
+} from "@/schemas/product.schema";
 
 export const productRouter = Router();
 
 productRouter.get("/all", getAll);
+productRouter.post("/save", [validatorHandler(CreateProducDto)], create);
 productRouter.get("/:id", [validatorHandler(ParamsIdNumber)], getOne);
+productRouter.put("/:id", [validatorHandler(UpdateProducDto)], update);
+productRouter.delete("/:id", [validatorHandler(ParamsIdNumber)], remove);

@@ -27,6 +27,18 @@ export const CreateProducDto = z.object({
   }),
 });
 
+export const UpdateProducDto = z.object({
+  body: z.object({
+    name: name.optional(),
+    image: image.optional(),
+    price: price.optional(),
+    stock: stock.optional(),
+  }),
+  params: z.object({
+    id,
+  }),
+});
+
 export const ParamsIdNumber = z.object({
   params: z.object({
     id,

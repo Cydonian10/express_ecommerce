@@ -5,9 +5,9 @@ export function validatorHandler(schema: AnyZodObject) {
   return function (req: Request, res: Response, next: NextFunction) {
     try {
       schema.parse({
-        body: req?.body,
-        params: req?.params,
-        querys: req?.query,
+        body: req.body,
+        params: req.params,
+        querys: req.query,
       });
       next();
     } catch (error) {
